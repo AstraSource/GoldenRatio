@@ -40,8 +40,9 @@ namespace GoldenRatioRoot
             var point = new PointAnnotation
             {
                 X = gold.root,
-                Y = MyMath.Function1(gold.root),
-                Fill = OxyColors.Red
+                Y = gold.value,
+                Fill = OxyColors.Red,
+                Text = String.Format("X = {0}\nY = {1}", gold.root, gold.value)
             };
             MyModel.Annotations.Add(point);
         }
@@ -55,6 +56,7 @@ namespace GoldenRatioRoot
         {
             public int step;
             public double root;
+            public double value;
         }
 
         public static double Function1(double x)
@@ -71,13 +73,14 @@ namespace GoldenRatioRoot
             {
                 result.step++;
                 double c = a + 0.618 * (b - a);
-                if (function(c) < eps) break;
+                //if (function(c) < eps) break;
                 if (Math.Sign(function(a)) * Math.Sign(function(c)) < 0) b = c;
                 else a = c;
             }
             while (b - a > eps);
 
             result.root = 0.5 * (b + a);
+            result.value = function(result.root);
             return result;
         }
     }
