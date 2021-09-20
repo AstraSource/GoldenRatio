@@ -10,7 +10,7 @@
     <Window.DataContext>
         <local:MainViewModel/>
     </Window.DataContext>
-    <Grid>
+    <Grid Height="434" VerticalAlignment="Bottom">
         <oxy:PlotView x:Name="MainPlotView" Model="{Binding MyModel}" Margin="4,164,4,10"/>
         <Label Content="A" HorizontalAlignment="Left" Margin="161,26,0,0" VerticalAlignment="Top"/>
         <Label Content="B" HorizontalAlignment="Left" Margin="161,61,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.533,-0.461"/>
@@ -19,5 +19,7 @@
         <TextBox x:Name="InputA" HorizontalAlignment="Left" Margin="190,30,0,0" Text="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="InputB" HorizontalAlignment="Left" Margin="190,65,0,0" Text="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="InputEpsilon" HorizontalAlignment="Left" Margin="190,101,0,0" Text="0.001" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <RadioButton x:Name="RBRoot" Content="Root" HorizontalAlignment="Left" Margin="336,53,0,0" VerticalAlignment="Top" GroupName="CalcMode"/>
+        <RadioButton x:Name="RBOpt" Content="Minimum Value" HorizontalAlignment="Left" Margin="336,74,0,0" VerticalAlignment="Top" GroupName="CalcMode" IsChecked="True"/>
     </Grid>
 </Window>
