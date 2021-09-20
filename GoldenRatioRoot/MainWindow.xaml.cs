@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,7 +37,7 @@ namespace GoldenRatioRoot
 
         private void CalcButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            control.Calculate();
         }
     }
 
@@ -48,17 +49,11 @@ namespace GoldenRatioRoot
 
         public void Calculate()
         {
-            //MainViewModel.MyModel;
-        }
-    }
+            double aNum = Double.Parse(a.Text, CultureInfo.InvariantCulture);
+            double bNum = Double.Parse(b.Text, CultureInfo.InvariantCulture);
+            double epsNum = Double.Parse(eps.Text, CultureInfo.InvariantCulture);
 
-    public class MainViewModel
-    {
-        public MainViewModel()
-        {
-            this.MyModel = new PlotModel { Title = "Golder Ratio Root" };
-            this.MyModel.Series.Add(new FunctionSeries(MyMath.Function1, 0, 10, 0.01, "sin(x) + cos(sqrt(3) * x)"));
-            var gold = MyMath.GoldenRatioRoot(MyMath.Function1, 2, 3, 0.001);
+            var gold = MyMath.GoldenRatioRoot(MyMath.Function1, aNum, bNum, epsNum);
             var point = new PointAnnotation
             {
                 X = gold.root,
@@ -66,10 +61,22 @@ namespace GoldenRatioRoot
                 Fill = OxyColors.Red,
                 Text = String.Format("X = {0}\nY = {1}", gold.root, gold.value)
             };
-            MyModel.Annotations.Add(point);
+            MainViewModel.MyModel.Annotations.Clear();
+            MainViewModel.MyModel.Annotations.Add(point);
+            MainViewModel.MyModel.InvalidatePlot(true);
+        }
+    }
+
+    public class MainViewModel
+    {
+        public MainViewModel()
+        {
+            MyModel = new PlotModel { Title = "Golder Ratio Root" };
+
+            MyModel.Series.Add(new FunctionSeries(MyMath.Function1, -20, 20, 0.01, "sin(x) + cos(sqrt(3) * x)"));
         }
 
-        public PlotModel MyModel { get; private set; }
+        public static PlotModel MyModel { get; private set; }
     }
 
     public class MyMath
