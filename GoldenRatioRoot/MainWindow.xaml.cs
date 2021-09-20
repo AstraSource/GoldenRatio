@@ -23,10 +23,32 @@ namespace GoldenRatioRoot
     /// </summary>
     public partial class MainWindow : Window
     {
+        Controller control;
+
         public MainWindow()
         {
             InitializeComponent();
+            control = new Controller();
+            control.a = InputA;
+            control.b = InputB;
+            control.eps = InputEpsilon;
+        }
+
+        private void CalcButton_Click(object sender, RoutedEventArgs e)
+        {
             
+        }
+    }
+
+    public class Controller
+    {
+        public TextBox a;
+        public TextBox b;
+        public TextBox eps;
+
+        public void Calculate()
+        {
+            //MainViewModel.MyModel;
         }
     }
 
