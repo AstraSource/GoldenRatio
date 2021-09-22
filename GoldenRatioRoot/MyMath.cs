@@ -8,21 +8,21 @@ namespace GoldenRatioRoot
 {
     public class MyMath
     {
-        public struct GoldenRatioResult
+        public static double Function1(double x) => Math.Sin(x) + Math.Cos(Math.Sqrt(3) * x);
+    }
+
+    public class Calculation
+    {
+        public struct CalculationResult
         {
             public int step;
             public double point;
             public double value;
         }
 
-        public static double Function1(double x)
+        public static CalculationResult GoldenRatioRoot(Func<double, double> function, double a, double b, double eps)
         {
-            return Math.Sin(x) + Math.Cos(Math.Sqrt(3) * x);
-        }
-
-        public static GoldenRatioResult GoldenRatioRoot(Func<double, double> function, double a, double b, double eps)
-        {
-            var result = new GoldenRatioResult();
+            var result = new CalculationResult();
             result.step = 0;
 
             do
@@ -40,9 +40,9 @@ namespace GoldenRatioRoot
             return result;
         }
 
-        public static GoldenRatioResult GoldenRatioOpt(Func<double, double> function, double a, double b, double eps)
+        public static CalculationResult GoldenRatioOpt(Func<double, double> function, double a, double b, double eps)
         {
-            var result = new GoldenRatioResult();
+            var result = new CalculationResult();
             result.step = 0;
 
             do

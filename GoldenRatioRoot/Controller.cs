@@ -12,21 +12,22 @@ namespace GoldenRatioRoot
 {
     public class Controller
     {
-        public TextBox a;
-        public TextBox b;
-        public TextBox eps;
-        public RadioButton root;
-        public RadioButton min;
+        public TextBox TextBoxA;
+        public TextBox TextBoxB;
+        public TextBox TextBoxEps;
+        public RadioButton RButtonRoot;
+        public RadioButton RButtonMin;
+        public RadioButton RButtonMax;
 
         public void Calculate()
         {
-            double aNum = Double.Parse(a.Text, CultureInfo.InvariantCulture);
-            double bNum = Double.Parse(b.Text, CultureInfo.InvariantCulture);
-            double epsNum = Double.Parse(eps.Text, CultureInfo.InvariantCulture);
+            double numA = Double.Parse(TextBoxA.Text, CultureInfo.InvariantCulture);
+            double numB = Double.Parse(TextBoxB.Text, CultureInfo.InvariantCulture);
+            double numEps = Double.Parse(TextBoxEps.Text, CultureInfo.InvariantCulture);
 
-            MyMath.GoldenRatioResult gold;
-            if (root.IsChecked == true) gold = MyMath.GoldenRatioRoot(MyMath.Function1, aNum, bNum, epsNum);
-            else gold = MyMath.GoldenRatioOpt(MyMath.Function1, aNum, bNum, epsNum);
+            Calculation.CalculationResult gold;
+            if (RButtonRoot.IsChecked == true) gold = Calculation.GoldenRatioRoot(MyMath.Function1, numA, numB, numEps);
+            else gold = Calculation.GoldenRatioOpt(MyMath.Function1, numA, numB, numEps);
 
             var point = new PointAnnotation
             {
@@ -37,14 +38,14 @@ namespace GoldenRatioRoot
             };
             var left = new PointAnnotation
             {
-                X = aNum,
-                Y = MyMath.Function1(aNum),
+                X = numA,
+                Y = MyMath.Function1(numA),
                 Fill = OxyColors.Blue
             };
             var right = new PointAnnotation
             {
-                X = bNum,
-                Y = MyMath.Function1(bNum),
+                X = numB,
+                Y = MyMath.Function1(numB),
                 Fill = OxyColors.Blue
             };
             MainViewModel.MyModel.Annotations.Clear();
