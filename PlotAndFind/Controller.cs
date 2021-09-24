@@ -15,9 +15,8 @@ namespace GoldenRatioRoot
         public TextBox TextBoxA;
         public TextBox TextBoxB;
         public TextBox TextBoxEps;
-        public RadioButton RButtonRoot;
-        public RadioButton RButtonMin;
-        public RadioButton RButtonMax;
+        public RadioButton RButtonGoldenSectionMin;
+        public RadioButton RButtonHalvingMin;
 
         public void Calculate()
         {
@@ -25,16 +24,16 @@ namespace GoldenRatioRoot
             double numB = Double.Parse(TextBoxB.Text, CultureInfo.InvariantCulture);
             double numEps = Double.Parse(TextBoxEps.Text, CultureInfo.InvariantCulture);
 
-            Calculation.CalculationResult gold;
-            if (RButtonRoot.IsChecked == true) gold = Calculation.GoldenRatioRoot(MyMath.Function1, numA, numB, numEps);
-            else gold = Calculation.GoldenRatioOpt(MyMath.Function1, numA, numB, numEps);
+            Calculation.CalculationResult result;
+            if (RButtonGoldenSectionMin.IsChecked == true) result = Calculation.GoldenSectionOpt(MyMath.Function1, numA, numB, numEps);
+            else result = Calculation.HalvingOpt(MyMath.Function1, numA, numB, numEps);
 
             var point = new PointAnnotation
             {
-                X = gold.point,
-                Y = gold.value,
+                X = result.point,
+                Y = result.value,
                 Fill = OxyColors.Red,
-                Text = String.Format("X = {0}\nY = {1}", gold.point, gold.value)
+                Text = String.Format("X = {0}\nY = {1}\nSteps = {2}", result.point, result.value, result.step)
             };
             var left = new PointAnnotation
             {

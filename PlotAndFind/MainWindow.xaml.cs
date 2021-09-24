@@ -19,8 +19,8 @@ namespace GoldenRatioRoot
                 TextBoxA = InputA,
                 TextBoxB = InputB,
                 TextBoxEps = InputEpsilon,
-                RButtonRoot = RBRoot,
-                RButtonMin = RBOpt
+                RButtonGoldenSectionMin = RBRoot,
+                RButtonHalvingMin = RBOpt
             };
         }
 
@@ -34,7 +34,7 @@ namespace GoldenRatioRoot
     {
         public MainViewModel()
         {
-            MyModel = new PlotModel { Title = "Golder Ratio" };
+            MyModel = new PlotModel { Title = "Minimum Value. Function plot"};
 
             MyModel.Series.Add(new FunctionSeries(MyMath.Function1, -20, 20, 0.01, "sin(x) + cos(sqrt(3) * x)"));
         }
