@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GoldenRatioRoot"
         mc:Ignorable="d"
-        Title="Plot and Find" Height="450" Width="490">
+        Title="Golder Ratio Root" Height="450" Width="490">
     <Window.DataContext>
         <local:MainViewModel/>
     </Window.DataContext>
@@ -19,7 +19,7 @@
         <TextBox x:Name="InputA" HorizontalAlignment="Left" Margin="190,30,0,0" Text="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="InputB" HorizontalAlignment="Left" Margin="190,65,0,0" Text="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="InputEpsilon" HorizontalAlignment="Left" Margin="190,101,0,0" Text="0.001" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <RadioButton x:Name="RBRoot" Content="Golden Section" HorizontalAlignment="Left" Margin="336,53,0,0" VerticalAlignment="Top" GroupName="CalcMode"/>
-        <RadioButton x:Name="RBOpt" Content="Halving" HorizontalAlignment="Left" Margin="336,74,0,0" VerticalAlignment="Top" GroupName="CalcMode" IsChecked="True"/>
+        <RadioButton x:Name="RBRoot" Content="Root" HorizontalAlignment="Left" Margin="336,53,0,0" VerticalAlignment="Top" GroupName="CalcMode"/>
+        <RadioButton x:Name="RBOpt" Content="Minimum Value" HorizontalAlignment="Left" Margin="336,74,0,0" VerticalAlignment="Top" GroupName="CalcMode" IsChecked="True"/>
     </Grid>
 </Window>

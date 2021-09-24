@@ -1,7 +1,11 @@
 ﻿using OxyPlot;
 using OxyPlot.Annotations;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Controls;
 
 namespace GoldenRatioRoot
@@ -11,8 +15,9 @@ namespace GoldenRatioRoot
         public TextBox TextBoxA;
         public TextBox TextBoxB;
         public TextBox TextBoxEps;
-        public RadioButton RButtonGoldenSectionMin;
-        public RadioButton RButtonHalvingMin;
+        public RadioButton RButtonRoot;
+        public RadioButton RButtonMin;
+        public RadioButton RButtonMax;
 
         public void Calculate()
         {
@@ -20,16 +25,16 @@ namespace GoldenRatioRoot
             double numB = Double.Parse(TextBoxB.Text, CultureInfo.InvariantCulture);
             double numEps = Double.Parse(TextBoxEps.Text, CultureInfo.InvariantCulture);
 
-            Calculation.CalculationResult result;
-            if (RButtonGoldenSectionMin.IsChecked == true) result = Calculation.GoldenSectionOpt(MyMath.Function1, numA, numB, numEps);
-            else result = Calculation.HalvingOpt(MyMath.Function1, numA, numB, numEps);
+            Calculation.CalculationResult gold;
+            if (RButtonRoot.IsChecked == true) gold = Calculation.GoldenRatioRoot(MyMath.Function1, numA, numB, numEps);
+            else gold = Calculation.GoldenRatioOpt(MyMath.Function1, numA, numB, numEps);
 
             var point = new PointAnnotation
             {
-                X = result.point,
-                Y = result.value,
+                X = gold.point,
+                Y = gold.value,
                 Fill = OxyColors.Red,
-                Text = String.Format("X = {0}\nY = {1}\nSteps = {2}", result.point, result.value, result.step)
+                Text = String.Format("X = {0}\nY = {1}", gold.point, gold.value)
             };
             var left = new PointAnnotation
             {
