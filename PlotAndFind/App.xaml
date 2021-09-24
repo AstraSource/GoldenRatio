@@ -1,7 +1,7 @@
-﻿<Application x:Class="GoldenRatioRoot.App"
+﻿<Application x:Class="PlotAndFind.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:GoldenRatioRoot"
+             xmlns:local="clr-namespace:PlotAndFind"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          

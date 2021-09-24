@@ -2,7 +2,7 @@
 using OxyPlot;
 using OxyPlot.Series;
 
-namespace GoldenRatioRoot
+namespace PlotAndFind
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
